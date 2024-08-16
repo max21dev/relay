@@ -11,14 +11,14 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Clean up previous builds
         run: |
           rm -rf examples/groups.nip29.com/groups.nip29.com
 
-      - name: Set up Go
-        uses: actions/setup-go@v4
+      - name: Setup Go
+        uses: actions/setup-go@v5
         with:
           go-version: '1.22.2'  # Specify your Go version
 
@@ -34,12 +34,12 @@ jobs:
           path: examples/groups.nip29.com/groups.nip29.com
 
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: build
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Download Artifact
         uses: actions/download-artifact@v3
