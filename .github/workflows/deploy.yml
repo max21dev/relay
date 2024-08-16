@@ -25,7 +25,7 @@ jobs:
       - name: Build Application
         run: |
           cd examples/groups.nip29.com
-          go build -o groups.nip29.com
+          go build -buildvcs=false -o groups.nip29.com
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
