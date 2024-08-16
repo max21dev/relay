@@ -1,4 +1,4 @@
-name: Deploy Golang App
+name: Deploy Golang Groups relay
 
 on:
   push:
@@ -12,6 +12,10 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+
+      - name: Clean up previous builds
+        run: |
+          rm -rf examples/groups.nip29.com/relay-server
 
       - name: Set up Go
         uses: actions/setup-go@v4
