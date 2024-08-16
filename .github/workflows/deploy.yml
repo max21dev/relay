@@ -54,7 +54,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           source: "groups.nip29.com"
-          target: "/var/www/relay-server"
+          target: "/var/www/relays"
 
       - name: Set execute permission
         uses: appleboy/ssh-action@v0.1.2
@@ -64,7 +64,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            chmod +x /var/www/relay-server/groups.nip29.com          
+            chmod +x /var/www/relays/groups.nip29.com          
 
       - name: Restart Application
         uses: appleboy/ssh-action@v0.1.2
@@ -74,4 +74,4 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            sudo systemctl restart relay-server.service
+            sudo systemctl restart relay-groups.service
