@@ -1,0 +1,63 @@
+name: Deploy Golang App
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'  # Specify your Go version
+
+      - name: Build Application
+        run: |
+          cd examples/groups.nip29.com
+          go build -o relay-server
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: relay-server
+          path: examples/groups.nip29.com/relay-server
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: relay-server
+
+      - name: Deploy to Server
+        uses: appleboy/scp-action@v0.1.2
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_PORT }}
+          source: "relay-server"
+          target: "/var/www/relay-server"
+
+      - name: Restart Application
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_PORT }}
+          script: |
+            sudo systemctl restart relay-server.service
