@@ -25,13 +25,13 @@ jobs:
       - name: Build Application
         run: |
           cd examples/groups.nip29.com
-          go build -o relay-server
+          go build -o groups.nip29.com
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: relay-server
-          path: examples/groups.nip29.com/relay-server
+          path: examples/groups.nip29.com/groups.nip29.com
 
   deploy:
     runs-on: ubuntu-latest
@@ -53,7 +53,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT }}
-          source: "relay-server"
+          source: "groups.nip29.com"
           target: "/var/www/relay-server"
 
       - name: Restart Application
