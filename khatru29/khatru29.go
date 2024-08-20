@@ -2,7 +2,6 @@ package khatru29
 
 import (
 	"github.com/fiatjaf/khatru"
-	"github.com/fiatjaf/relay29"
 	"github.com/nbd-wtf/go-nostr"
 )
 

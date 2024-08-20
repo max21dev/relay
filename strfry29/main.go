@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/fiatjaf/eventstore/strfry"
-	"github.com/fiatjaf/relay29"
+	"github.com/max21dev/relay"
 	"github.com/nbd-wtf/go-nostr"
 )
 

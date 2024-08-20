@@ -8,15 +8,15 @@ import (
 	"github.com/fiatjaf/eventstore/bolt"
 	"github.com/fiatjaf/khatru"
 	"github.com/fiatjaf/khatru/policies"
-	"github.com/fiatjaf/relay29"
-	"github.com/fiatjaf/relay29/khatru29"
 	"github.com/kelseyhightower/envconfig"
+	"github.com/max21dev/relay"
+	"github.com/max21dev/relay/khatru29"
 	"github.com/nbd-wtf/go-nostr"
 	"github.com/rs/zerolog"
 )
 
 type Settings struct {
-  Port             string `envconfig:"PORT" required:"true"`
+	Port             string `envconfig:"PORT" required:"true"`
 	Domain           string `envconfig:"DOMAIN" required:"true"`
 	RelayName        string `envconfig:"RELAY_NAME" required:"true"`
 	RelayPrivkey     string `envconfig:"RELAY_PRIVKEY" required:"true"`

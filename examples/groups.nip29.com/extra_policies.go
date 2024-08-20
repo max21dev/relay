@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/fiatjaf/relay29"
+	"github.com/max21dev/relay"
 	"github.com/nbd-wtf/go-nostr"
 	"github.com/puzpuzpuz/xsync/v3"
 	"golang.org/x/time/rate"

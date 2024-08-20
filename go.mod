@@ -1,4 +1,4 @@
-module github.com/fiatjaf/relay29
+module github.com/max21dev/relay
 
 go 1.22.4
 

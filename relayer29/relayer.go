@@ -4,8 +4,8 @@ import (
 	"context"
 	"errors"
 	"github.com/fiatjaf/eventstore"
-	"github.com/fiatjaf/relay29"
 	"github.com/fiatjaf/relayer/v2"
+	"github.com/max21dev/relay"
 	"github.com/nbd-wtf/go-nostr"
 	"github.com/nbd-wtf/go-nostr/nip11"
 )
