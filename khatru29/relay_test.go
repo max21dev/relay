@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/fiatjaf/eventstore/slicestore"
+	"github.com/max21dev/relay"
 	"github.com/nbd-wtf/go-nostr"
 	"github.com/stretchr/testify/require"
 	"golang.org/x/exp/slices"
