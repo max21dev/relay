@@ -41,7 +41,7 @@ jobs:
           CC=aarch64-linux-gnu-gcc GOOS=linux GOARCH=arm64 CGO_ENABLED=1 go build -tags pwritev -buildvcs=false -o groups.nip29.com
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: relay-server
           path: examples/groups.nip29.com/groups.nip29.com
