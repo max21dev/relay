@@ -14,13 +14,22 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Clean up previous builds
-        run: |
-          rm -rf examples/groups.nip29.com/groups.nip29.com
+        run: rm -rf examples/groups.nip29.com/groups.nip29.com
 
       - name: Setup Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v4
         with:
-          go-version: '1.23.0'  # Specify your Go version
+          go-version: '1.23.0'  # Use latest Go version
+
+      - name: Cache Go Modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
 
       - name: Build Application
         run: |
@@ -63,8 +72,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT }}
-          script: |
-            chmod +x /var/www/relays/groups.nip29.com          
+          script: chmod +x /var/www/relays/groups.nip29.com
 
       - name: Restart Application
         uses: appleboy/ssh-action@v0.1.2
@@ -73,5 +81,4 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT }}
-          script: |
-            sudo systemctl restart relay-groups.service
+          script: sudo systemctl restart relay-groups.service
