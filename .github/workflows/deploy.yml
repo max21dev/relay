@@ -35,7 +35,7 @@ jobs:
         run: |
           cd examples/groups.nip29.com
           go get github.com/PowerDNS/lmdb-go/lmdb
-          GOOS=linux GOARCH=arm64 go build -buildvcs=false -o groups.nip29.com
+          GOOS=linux GOARCH=arm64 go build -tags pwritev -buildvcs=false -o groups.nip29.com
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
