@@ -7,9 +7,9 @@ import (
 	"slices"
 
 	"github.com/fiatjaf/eventstore/slicestore"
-	"github.com/fiatjaf/relay29"
-	"github.com/fiatjaf/relay29/relayer29"
 	"github.com/fiatjaf/relayer/v2"
+	"github.com/max21dev/relay"
+	"github.com/max21dev/relay/relayer29"
 	"github.com/nbd-wtf/go-nostr"
 )
 

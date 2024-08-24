@@ -7,8 +7,8 @@ import (
 
 	"github.com/fiatjaf/eventstore/slicestore"
 	"github.com/fiatjaf/khatru/policies"
-	"github.com/fiatjaf/relay29"
-	"github.com/fiatjaf/relay29/khatru29"
+	"github.com/max21dev/relay"
+	"github.com/max21dev/relay/khatru29"
 	"github.com/nbd-wtf/go-nostr"
 )
 
