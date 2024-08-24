@@ -8,7 +8,6 @@ require (
 	github.com/fiatjaf/relayer/v2 v2.2.1
 	github.com/fiatjaf/set v0.0.3
 	github.com/kelseyhightower/envconfig v1.4.0
-	github.com/kr/pretty v0.3.1
 	github.com/nbd-wtf/go-nostr v0.34.5
 	github.com/puzpuzpuz/xsync/v3 v3.4.0
 	github.com/rs/zerolog v1.31.0
