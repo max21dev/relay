@@ -16,6 +16,9 @@ jobs:
       - name: Clean up previous builds
         run: rm -rf examples/groups.nip29.com/groups.nip29.com
 
+      - name: Install ARM64 Toolchain
+        run: sudo apt-get update && sudo apt-get install -y gcc-aarch64-linux-gnu
+
       - name: Setup Go
         uses: actions/setup-go@v5
         with:
@@ -35,7 +38,7 @@ jobs:
         run: |
           cd examples/groups.nip29.com
           go get github.com/PowerDNS/lmdb-go/lmdb
-          GOOS=linux GOARCH=arm64 CGO_ENABLED=1 go build -tags pwritev -buildvcs=false -o groups.nip29.com
+          CC=aarch64-linux-gnu-gcc GOOS=linux GOARCH=arm64 CGO_ENABLED=1 go build -tags pwritev -buildvcs=false -o groups.nip29.com
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
